@@ -32,7 +32,7 @@ public class DifferentStrings {
 		char a[] = A.toCharArray();
 		char b[] = B.toCharArray();
 		int count = 0,i = 0;
-		while(i < A.length()) {
+		while(i < B.length()) {
 			if(a[i] != b[i]) {
 				count++;
 			}
