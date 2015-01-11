@@ -4,7 +4,9 @@ import static java.lang.Math.*;
 
 public class MountainRoad {
 
-	public double findDistance(int[] start, int[] finish) {
+	public double findDistance1(int[] start, int[] finish) {
+		final int oo = 1 << 30;
+		System.out.println(oo);
 		sort(start, finish);
 		int currentstart = start[0];
 		int currentfinish = finish[0];
@@ -47,5 +49,17 @@ public class MountainRoad {
 			}
 		}
 		int a= 0;
+	}
+
+	/* this is justforlaugh's beautiful solution */
+	public double findDistance(int[]  start, int[] finish) {
+		final int oo = 999;
+		double r= 0,a =oo, b = -oo;
+		for(int i=0; i< start.length; ++i){
+			a = Math.min(a, start[i]);
+			b = Math.max(b, finish[i]);
+		}
+
+		return (Math.abs(a-b)/Math.sqrt(2))*2;
 	}
 }

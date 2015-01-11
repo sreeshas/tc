@@ -1,0 +1,13 @@
+This is one of the beautiful math problem ive seen so far.
+
+I did not realize until i saw "justforlaugh"'s solution.
+
+Instead of actually calculating the traversed path, his solution simply takes the minimum and maximum values of
+start and finish array respectively and calculates the size.
+
+I was trying to understand how this worked but got the intuition only after observing the figure. if you can imagine
+a square in between mountains (in the illustrated figure), it would actually be one big isoscelos triangle, which would
+give the right answer.
+
+Mind blown!
+
