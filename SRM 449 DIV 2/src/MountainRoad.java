@@ -3,43 +3,49 @@ import java.math.*;
 import static java.lang.Math.*;
 
 public class MountainRoad {
-	
-	public double findDistance(int[] start, int[] finish) {
 
-		int i= 0;
-		double newresult = 0;
-		while(i <start.length) {
-			if( i+1 <start.length && finish[i] > start[i+1]) {
-				//there is overlap.
-				double side = getside(start[i], finish[i]);
-				double firstmountainlength = side * 2;
-				side = getside(start[i+1], finish[i+1]);
-				int border = finish[i+1];
-				double secondmountainlength = side * 2;
-				double negateside = getside(start[i+1], finish[i]);
-				newresult = newresult + firstmountainlength + secondmountainlength - (negateside * 2);
-                int k = i + 2;
-				while(k <start.length && start[k] <= border && finish[k] <= border) {
-					k++;
+	public double findDistance(int[] start, int[] finish) {
+		sort(start, finish);
+		int currentstart = start[0];
+		int currentfinish = finish[0];
+		int latestfinish =finish[0];
+		double result = 2 * getside(currentstart, currentfinish);
+		for(int i=1; i<start.length; i++) {
+			currentstart = start[i];
+			currentfinish = finish[i];
+			if( currentstart < latestfinish && currentfinish < latestfinish) {
+				continue;
+			}else {
+				if(currentstart < latestfinish) {
+					result += (2*getside(currentstart, currentfinish)) - (2 * getside(currentstart, latestfinish));
+					latestfinish = currentfinish;
 				}
-				i = k;
-			} else {
-				double side = getside(start[i], finish[i]);
-				newresult += (side * 2);
-				i++;
 			}
 		}
-
-		return newresult;
-
+		return result;
 	}
+
 
 	public static double getside(int start, int finish) {
 		int  hypotenuse = Math.abs(finish - start);
 		return hypotenuse/ (Math.sqrt(2));
-//		int hypsquare = hypotenuse * hypotenuse;
-//		return  Math.sqrt(hypsquare /2);
 
+	}
 
+	public static void sort(int[] start, int[] finish) {
+		for(int i= 0;i<start.length; i++) {
+			for(int j=i+1;j<start.length;j++) {
+				if(start[i] > start[j]) {
+					int temp = start[i];
+					start[i] = start[j];
+					start[j] = temp;
+					temp = finish[i];
+					finish[i] = finish[j];
+					finish[j] = temp;
+
+				}
+			}
+		}
+		int a= 0;
 	}
 }

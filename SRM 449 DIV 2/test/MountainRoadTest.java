@@ -2,7 +2,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class MountainRoadTest {
-	
+
 	@Test(timeout=2000)
 	public void test0() {
 		int[] start = new int[] {1};
