@@ -3,8 +3,21 @@ import java.math.*;
 import static java.lang.Math.*;
 
 public class Target {
-	
-	public String[] draw(int n) {
+
+	public String[]  draw(int n) {
+		char[][] target = new char[n][n];
+		init(target,n);
+		for(int i=0; i< n; i++) {
+			for(int j=0;j<n;j++) {
+				if(max(abs(i-(n/2)), abs(j-(n/2))) %2 == 0) {
+					target[i][j] = '#';
+				}
+			}
+		}
+		return draw2(target, n);
+	}
+
+	public String[] draw1(int n) {
 		char[][] target = new char[n][n];
 		init(target, n);
 		char[] symbol = new char[]{'#', ' '};
@@ -48,7 +61,7 @@ public class Target {
 	public static void init(char[][] target, int n) {
 		for(int i=0; i< n; i++) {
 			for(int j=0;j<n;j++) {
-				target[i][j] = '.';
+				target[i][j] = ' ';
 			}
 
 		}
