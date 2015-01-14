@@ -1,0 +1,2 @@
+should have just tried brute force and optimized for time.
+missed the fact that it was i+j that mattered. not individual i or j.
